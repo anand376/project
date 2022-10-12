@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('subject');
 });
 route::get('subject',[usercontroller::class,'subject']);
 route::post('/subjectAdd',[usercontroller::class,'subjectAdd']);

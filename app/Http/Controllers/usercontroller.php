@@ -35,7 +35,7 @@ class usercontroller extends Controller
         $data->name = $request->name;
         $data->email = $request->email;
         $data->save();
-        return redirect('/subjectlist');
+        return redirect('/facultylist');
     }
 
     public function facultylist()

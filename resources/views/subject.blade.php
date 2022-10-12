@@ -10,6 +10,9 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -63,7 +66,7 @@
                     <div class="row justify-content-center">
          
                         <div class="col-4">
-    <form action="/subjectAdd" method="post">
+    <form action="/subjectAdd" id="form" method="post">
         @csrf
         <div class="form-group">
 
@@ -78,7 +81,7 @@
             @endforeach   
           </select>
         </div>
-        <button id="submit" type="submit">Submit</button>
+        <button  value="submit" type="submit">Submit</button>
       </form>
                         </div>
                     </div>
@@ -87,16 +90,16 @@
       </section>
 
       <script>
-        $(document).ready(function () {
-$('#subject').blur(function()
-{
-    if( !$(this).val() ) {
-        $('#submit').attr('type','button');
-    }else{
-        $('#submit').attr('type','submit');
+$(document).ready(function() {
+$( "#form" ).validate({
+  rules: {
+    subject: {
+      required: true,
+      maxlength: 200
     }
+  }
 });
-        });
+});
     </script>
 </body>
 </html>

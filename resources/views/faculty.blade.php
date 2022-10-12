@@ -10,6 +10,9 @@
 <!-- JavaScript Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -64,7 +67,7 @@
                     <div class="row justify-content-center">
          
                         <div class="col-4">
-    <form action="/facultyAdd" method="post">
+    <form action="/facultyAdd" id="facultyform" method="post">
         @csrf
         <div class="form-group">
 
@@ -84,4 +87,27 @@
       </section>
 
 </body>
+<script>
+
+$(document).ready(function() {
+  $("#facultyform").validate({
+    rules: {
+      name : {
+        required: true,
+        minlength: 3
+      },
+      email: {
+        required: true,
+        email: true
+      },
+    
+    }, 
+      email: {
+        email: "The email should be in the format: abc@domain.tld"
+      },
+     
+    });
+  });
+    
+    </script>
 </html>
